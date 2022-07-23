@@ -39,7 +39,7 @@ while True:
     line = "```\n" + line + "\n```"
 
     # Telegram Markdown V1 and V2 breaks with '#'-symbol. Replace with "hash"
-    line = line.translate(str.maketrans({"#": r" hash "}))
+    line = line.translate(str.maketrans({"#": r"%23"}))
 
     # Check timeout
     time_start = time.time()
