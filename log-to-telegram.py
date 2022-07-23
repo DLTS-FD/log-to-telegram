@@ -17,7 +17,7 @@ def sendTelegramMessage(message):
 
     bot_token = config['telegram']['bot_token']
     bot_chatID = config['telegram']['bot_chatID']
-    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + message
+    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=MarkdownV2&text=' + message
     response = requests.get(send_text)
 
 # Load config file
@@ -33,7 +33,13 @@ logging.debug('Loaded config: ' + str(config))
 
 # Main loop
 while True:
-    line = str(f.stdout.readline())
+    line = f.stdout.readline().decode()
+
+    # Wrapp message to monospaced code block
+    line = "```\n" + line + "\n```"
+
+    # Telegram Markdown V1 and V2 breaks with '#'-symbol. Replace with "hash"
+    line = line.translate(str.maketrans({"#": r" hash "}))
 
     # Check timeout
     time_start = time.time()
