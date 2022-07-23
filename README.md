@@ -11,9 +11,9 @@ Inspired by [JVCubed/log-to-telegram](https://github.com/JVCubed/log-to-telegram
 
 ## Setup Docker run
 - Update the `config.yml`
--- Add TelegramBot api and chatID to `config.yml`
--- Add triggers to the list to `config.yml`
--- Run
+    - Add TelegramBot api and chatID to `config.yml`
+    - Add triggers to the list to `config.yml`
+- Run
 
 
         $ docker run -v {location of config.yml}:/app/config.yml -v {location of log file}:/app/file.log ghcr.io/dlts-fd/log-to-telegram:latest
@@ -22,9 +22,9 @@ Inspired by [JVCubed/log-to-telegram](https://github.com/JVCubed/log-to-telegram
 
 ## Docker compose
 - Update the `config.yml`
--- Add TelegramBot api and chatID to `config.yml`
--- Add triggers to the list to `config.yml`
--- Add to docker-compose.yml
+    - Add TelegramBot api and chatID to `config.yml`
+    - Add triggers to the list to `config.yml`
+- Add to docker-compose.yml:
 ```
 log-to-telegram:
     image: ghcr.io/dlts-fd/log-to-telegram:latest
