@@ -44,3 +44,4 @@ log-to-telegram:
 
 - In `config.yml` it's possible to edit the timeout period.
 - Logs will be printed to the terminal. There's also a `/app/debug.log` file.
+- Some applications perform logfile rotation. In that case log-to-telegram will stop reporting new lines as the mounted file will no longer update. If your application does lofgile rotation, setup a cronjob to restart the container to recognize the changed files. 
